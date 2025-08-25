@@ -1,4 +1,4 @@
-package com.gestion_proyectos.entity;
+package com.gestion_proyectos.api.entity;
 
 import java.time.LocalDate;
 

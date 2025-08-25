@@ -1,4 +1,4 @@
-package com.gestion_proyectos.dto;
+package com.gestion_proyectos.api.dto;
 
 import java.time.LocalDate;
 

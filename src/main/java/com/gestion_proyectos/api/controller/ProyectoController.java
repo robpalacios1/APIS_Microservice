@@ -1,4 +1,4 @@
-package com.gestion_proyectos.controller;
+package com.gestion_proyectos.api.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.gestion_proyectos.entity.Proyecto;
-import com.gestion_proyectos.service.ProyectoService;
-import com.gestion_proyectos.dto.CrearProyectoDataTransferObject;
+import com.gestion_proyectos.api.dto.CrearProyectoDataTransferObject;
+import com.gestion_proyectos.api.entity.Proyecto;
+import com.gestion_proyectos.api.service.ProyectoService;
 
 @RestController
 @RequestMapping("/proyectos")

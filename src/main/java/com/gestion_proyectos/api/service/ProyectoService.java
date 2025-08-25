@@ -1,8 +1,8 @@
-package com.gestion_proyectos.service;
+package com.gestion_proyectos.api.service;
 
-import com.gestion_proyectos.entity.Proyecto;
-import com.gestion_proyectos.repository.ProyectoRepository;
-import com.gestion_proyectos.dto.CrearProyectoDataTransferObject;
+import com.gestion_proyectos.api.dto.CrearProyectoDataTransferObject;
+import com.gestion_proyectos.api.entity.Proyecto;
+import com.gestion_proyectos.api.repository.ProyectoRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
