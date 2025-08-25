@@ -4,6 +4,8 @@ import com.gestion_proyectos.api.dto.CrearProyectoDataTransferObject;
 import com.gestion_proyectos.api.entity.Proyecto;
 import com.gestion_proyectos.api.repository.ProyectoRepository;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,5 +27,9 @@ public class ProyectoService {
 
     //
     return proyectoRepository.save(nuevoProyecto);
+  }
+
+  public List<Proyecto> obtenerProyectos() {
+    return proyectoRepository.findAll();
   }
 }

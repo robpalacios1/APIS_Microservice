@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.gestion_proyectos.api.dto.CrearProyectoDataTransferObject;
 import com.gestion_proyectos.api.entity.Proyecto;
 import com.gestion_proyectos.api.service.ProyectoService;
+import org.springframework.web.bind.annotation.GetMapping;
+import java.util.List;
 
 @RestController
 @RequestMapping("/proyectos")
@@ -24,5 +26,10 @@ public class ProyectoController {
     Proyecto proyectoGuardado = proyectoService.crearProyecto(proyectoDTO);
     // Return the created project with HTTP status 201 (Created)
     return new ResponseEntity<>(proyectoGuardado, HttpStatus.CREATED);
+  }
+
+  @GetMapping
+  public List<Proyecto> obtenerProyectos() {
+    return proyectoService.obtenerProyectos();
   }
 }
