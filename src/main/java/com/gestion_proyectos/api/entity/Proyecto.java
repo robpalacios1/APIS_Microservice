@@ -21,6 +21,7 @@ public class Proyecto {
   private String nombre;
   private String descripcion;
   private LocalDate fechaInicio;
+  private String lider;
 
   public Long getId() {
     return id;
@@ -52,5 +53,15 @@ public class Proyecto {
 
   public void setFechaInicio(LocalDate fechaInicio) {
     this.fechaInicio = fechaInicio;
+  }
+
+  //getters and setters for Lider
+
+  public String getLider() {
+    return lider;
+  }
+
+  public void setLider(String lider) {
+    this.lider = lider;
   }
 }
