@@ -4,15 +4,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.gestion_proyectos.api.dto.AsignarLiderDataTransferObject;
 import com.gestion_proyectos.api.dto.CrearProyectoDataTransferObject;
 import com.gestion_proyectos.api.entity.Proyecto;
 import com.gestion_proyectos.api.service.ProyectoService;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/proyectos")
@@ -31,5 +36,18 @@ public class ProyectoController {
   @GetMapping
   public List<Proyecto> obtenerProyectos() {
     return proyectoService.obtenerProyectos();
+  }
+
+  @PutMapping("/{id}/asignar-lider")
+  public ResponseEntity<Proyecto> asignarLider(
+                                  @PathVariable Long id,
+                                  @RequestBody AsignarLiderDataTransferObject dto) {
+    Optional<Proyecto> proyectoActualizado = proyectoService.asignarLider(id, dto.getLiderId());
+
+    if (proyectoActualizado.isPresent()) {
+      return ResponseEntity.ok(proyectoActualizado.get());
+    } else {
+      return ResponseEntity.notFound().build();
+    }
   }
 }
