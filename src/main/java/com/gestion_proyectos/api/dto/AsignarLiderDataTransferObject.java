@@ -1,6 +1,6 @@
 package com.gestion_proyectos.api.dto;
 
-public class AsignarLiderDTO {
+public class AsignarLiderDataTransferObject {
 
   private String liderId;
 
