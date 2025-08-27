@@ -6,8 +6,15 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
+
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Data
@@ -21,8 +28,23 @@ public class Proyecto {
   private String nombre;
   private String descripcion;
   private LocalDate fechaInicio;
-  private String lider;
+  //private String lider;
 
+  //Many to One with Usuario as Lider
+  @ManyToOne
+  @JoinColumn(name = "lider_id")
+  private Usuario lider;
+
+  //Many to many for developers
+  @ManyToMany
+  @JoinTable(
+    name = "proyecto_desarrolladores",
+    joinColumns = @JoinColumn(name = "proyecto_id"),
+    inverseJoinColumns = @JoinColumn(name = "usuario_id")
+  )
+  private Set<Usuario> desarrolladores = new HashSet<>();
+
+// Getters and Setter for all attributes
   public Long getId() {
     return id;
   }
@@ -56,12 +78,20 @@ public class Proyecto {
   }
 
   //getters and setters for Lider
-
-  public String getLider() {
+  public Usuario getLider() {
     return lider;
   }
 
-  public void setLider(String lider) {
+  public void setLider(Usuario lider) {
     this.lider = lider;
+  }
+
+  //getters and setters for developers
+  public Set<Usuario> getDesarrolladores() {
+    return desarrolladores;
+  }
+
+  public void setDesarrolladores(Set<Usuario> desarrolladores) {
+    this.desarrolladores = desarrolladores;
   }
 }
