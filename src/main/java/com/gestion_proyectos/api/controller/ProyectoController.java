@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.gestion_proyectos.api.dto.AsignacionDataTransferObject;
-import com.gestion_proyectos.api.dto.AsignarLiderDataTransferObject;
 import com.gestion_proyectos.api.dto.CrearProyectoDataTransferObject;
 import com.gestion_proyectos.api.entity.Proyecto;
 import com.gestion_proyectos.api.service.ProyectoService;
