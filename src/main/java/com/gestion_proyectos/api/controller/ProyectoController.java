@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.gestion_proyectos.api.dto.AsignacionDataTransferObject;
 import com.gestion_proyectos.api.dto.AsignarLiderDataTransferObject;
 import com.gestion_proyectos.api.dto.CrearProyectoDataTransferObject;
 import com.gestion_proyectos.api.entity.Proyecto;
@@ -41,8 +42,8 @@ public class ProyectoController {
   @PutMapping("/{id}/asignar-lider")
   public ResponseEntity<Proyecto> asignarLider(
                                   @PathVariable Long id,
-                                  @RequestBody AsignarLiderDataTransferObject dto) {
-    Optional<Proyecto> proyectoActualizado = proyectoService.asignarLider(id, dto.getLiderId());
+                                  @RequestBody AsignacionDataTransferObject dto) {
+    Optional<Proyecto> proyectoActualizado = proyectoService.asignarLider(id, dto.getUsuarioId());
 
     if (proyectoActualizado.isPresent()) {
       return ResponseEntity.ok(proyectoActualizado.get());
