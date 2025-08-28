@@ -28,7 +28,7 @@ public class CrearUsuarioDataTransferObject {
     return rol;
   }
 
-  public void setRol(String password) {
-    this.rol = password;
+  public void setRol(String rol) {
+    this.rol = rol;
   }
 }
