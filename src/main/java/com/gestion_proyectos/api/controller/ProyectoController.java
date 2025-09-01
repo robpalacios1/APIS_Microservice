@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.gestion_proyectos.api.dto.AsignacionDataTransferObject;
+import com.gestion_proyectos.api.dto.AsignarDesarrolladoresDataTransferObject;
 import com.gestion_proyectos.api.dto.CrearProyectoDataTransferObject;
 import com.gestion_proyectos.api.entity.Proyecto;
 import com.gestion_proyectos.api.service.ProyectoService;
@@ -43,6 +44,20 @@ public class ProyectoController {
                                   @PathVariable Long id,
                                   @RequestBody AsignacionDataTransferObject dto) {
     Optional<Proyecto> proyectoActualizado = proyectoService.asignarLider(id, dto.getUsuarioId());
+
+    if (proyectoActualizado.isPresent()) {
+      return ResponseEntity.ok(proyectoActualizado.get());
+    } else {
+      return ResponseEntity.notFound().build();
+    }
+  }
+
+  @PutMapping("/{id}/asignar-dev")
+  public ResponseEntity<Proyecto> asignarDesarrolladores(
+                                  @PathVariable Long id,
+                                  @RequestBody AsignarDesarrolladoresDataTransferObject dto) {
+    Optional<Proyecto> proyectoActualizado = proyectoService.asignarDesarrolladores(id,
+        dto.getDesarrolladoresDataTransferObject());
 
     if (proyectoActualizado.isPresent()) {
       return ResponseEntity.ok(proyectoActualizado.get());
