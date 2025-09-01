@@ -41,8 +41,8 @@ public class ProyectoController {
 
   @PutMapping("/{id}/asignar-lider")
   public ResponseEntity<Proyecto> asignarLider(
-                                  @PathVariable Long id,
-                                  @RequestBody AsignacionDataTransferObject dto) {
+      @PathVariable Long id,
+      @RequestBody AsignacionDataTransferObject dto) {
     Optional<Proyecto> proyectoActualizado = proyectoService.asignarLider(id, dto.getUsuarioId());
 
     if (proyectoActualizado.isPresent()) {
@@ -54,8 +54,8 @@ public class ProyectoController {
 
   @PutMapping("/{id}/asignar-dev")
   public ResponseEntity<Proyecto> asignarDesarrolladores(
-                                  @PathVariable Long id,
-                                  @RequestBody AsignarDesarrolladoresDataTransferObject dto) {
+      @PathVariable Long id,
+      @RequestBody AsignarDesarrolladoresDataTransferObject dto) {
     Optional<Proyecto> proyectoActualizado = proyectoService.asignarDesarrolladores(id,
         dto.getDesarrolladoresDataTransferObject());
 
