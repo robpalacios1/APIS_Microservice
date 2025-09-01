@@ -23,11 +23,7 @@ public class Usuario {
 
   // Many to Many with Rol
   @ManyToMany(fetch = FetchType.EAGER)
-  @JoinTable(
-    name = "usuario_roles",
-    joinColumns = @JoinColumn(name = "usuario_id"),
-    inverseJoinColumns = @JoinColumn(name = "rol_id")
-  )
+  @JoinTable(name = "usuario_roles", joinColumns = @JoinColumn(name = "usuario_id"), inverseJoinColumns = @JoinColumn(name = "rol_id"))
   private Set<Rol> roles = new HashSet<>();
 
   // Getters and Setters
@@ -53,5 +49,13 @@ public class Usuario {
 
   public void setEmail(String email) {
     this.email = email;
+  }
+
+  public Set<Rol> getRoles() {
+    return roles;
+  }
+
+  public void setRoles(Set<Rol> roles) {
+    this.roles = roles;
   }
 }
