@@ -54,4 +54,21 @@ public class ProyectoService {
     // if not exists, return empty
     return Optional.empty(); // If not exists, return empty
   }
+
+  public Optional<Proyecto> asignarDesarrolladores(Long proyectoId, List<Long> desarrolladoresIds) {
+    // Search project
+    Optional<Proyecto> proyectoOptional = proyectoRepository.findById(proyectoId);
+
+    // if not exists, return empty
+    if (proyectoOptional.isEmpty()) {
+      return Optional.empty();
+    }
+     // Search all users by IDs
+    List<Usuario> desarrolladores = usuarioRepository.findAllById(desarrolladoresIds);
+
+    Proyecto proyecto = proyectoOptional.get(); //Asign the list od developers to the project
+    proyecto.getDesarrolladores().addAll(desarrolladores); // use a set to avoid duplicates
+    proyectoRepository.save(proyecto); // Save the project with the new developers
+    return Optional.of(proyecto);
+  }
 }
