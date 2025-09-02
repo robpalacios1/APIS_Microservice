@@ -16,6 +16,7 @@ import com.gestion_proyectos.api.entity.Proyecto;
 import com.gestion_proyectos.api.service.ProyectoService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.security.access.prepost.PreAuthorize;
 
 import java.util.List;
 import java.util.Optional;
@@ -53,6 +54,7 @@ public class ProyectoController {
   }
 
   @PutMapping("/{id}/asignar-dev")
+  @PreAuthorize("hasRole('LIDER')")
   public ResponseEntity<Proyecto> asignarDesarrolladores(
       @PathVariable Long id,
       @RequestBody AsignarDesarrolladoresDataTransferObject dto) {
