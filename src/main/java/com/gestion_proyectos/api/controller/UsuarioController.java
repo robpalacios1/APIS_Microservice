@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.access.prepost.PreAuthorize;
 
 
 
@@ -22,6 +23,7 @@ public class UsuarioController {
   private UsuarioService usuarioService;
 
   @PostMapping
+  @PreAuthorize("hasRole('ADMIN')")
   public ResponseEntity<Usuario> registrarUsuario(@RequestBody CrearUsuarioDataTransferObject usuarioDataTransferObject) {
     Usuario nuevoUsuario = usuarioService.crearUsuario(usuarioDataTransferObject);
     return new ResponseEntity<>(nuevoUsuario, HttpStatus.CREATED);
