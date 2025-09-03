@@ -34,7 +34,7 @@ public class AuthController {
   @PostMapping("/login")
   public ResponseEntity<?> createAuthenticationToken(@RequestBody LoginRequest loginRequest) throws Exception {
     logger.info("Login attempt for email: {}", loginRequest.getEmail());
-    
+
     try {
       // Validate input
       if (loginRequest.getEmail() == null || loginRequest.getEmail().trim().isEmpty()) {
