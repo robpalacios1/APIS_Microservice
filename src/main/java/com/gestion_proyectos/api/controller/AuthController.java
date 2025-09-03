@@ -15,9 +15,16 @@ import com.gestion_proyectos.api.dto.LoginRequest;
 import com.gestion_proyectos.api.dto.LoginResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 @RestController
 @RequestMapping("/auth")
+@Tag(name = "Autenticación", description = "Endpoints para autenticación y autorización")
 public class AuthController {
 
   private static final Logger logger = LoggerFactory.getLogger(AuthController.class);
@@ -32,6 +39,12 @@ public class AuthController {
   private JwtUtil jwtUtil;
 
   @PostMapping("/login")
+  @Operation(summary = "Iniciar sesión", description = "Autentica un usuario y devuelve un JWT token")
+  @ApiResponses(value = {
+      @ApiResponse(responseCode = "200", description = "Login exitoso", content = @Content(schema = @Schema(implementation = LoginResponse.class))),
+      @ApiResponse(responseCode = "400", description = "Credenciales inválidas"),
+      @ApiResponse(responseCode = "401", description = "No autorizado")
+  })
   public ResponseEntity<?> createAuthenticationToken(@RequestBody LoginRequest loginRequest) throws Exception {
     logger.info("Login attempt for email: {}", loginRequest.getEmail());
 
@@ -67,6 +80,8 @@ public class AuthController {
   }
 
   @PostMapping("/test")
+  @Operation(summary = "Endpoint de prueba", description = "Verifica que el endpoint de autenticación esté funcionando")
+  @ApiResponse(responseCode = "200", description = "Endpoint funcionando correctamente")
   public ResponseEntity<?> testEndpoint() {
     logger.info("Test endpoint called");
     return ResponseEntity.ok("Auth endpoint is working!");
