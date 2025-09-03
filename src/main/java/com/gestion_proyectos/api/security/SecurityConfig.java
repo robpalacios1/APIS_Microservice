@@ -68,11 +68,14 @@ public class SecurityConfig {
         .cors(cors -> cors.configurationSource(corsConfigurationSource()))
         .csrf(csrf -> csrf.disable())
         .authorizeHttpRequests(auth -> auth
-            .requestMatchers("/swagger-ui/**").permitAll()
-            .requestMatchers("/v3/api-docs/**").permitAll()
             .requestMatchers("/auth/**").permitAll()
             .requestMatchers("/h2-console/**").permitAll() // Para desarrollo con H2
             .requestMatchers("/error").permitAll()
+            .requestMatchers("/swagger-ui/**").permitAll() // Swagger UI
+            .requestMatchers("/swagger-ui.html").permitAll() // Swagger UI HTML
+            .requestMatchers("/v3/api-docs/**").permitAll() // OpenAPI JSON
+            .requestMatchers("/swagger-resources/**").permitAll() // Swagger resources
+            .requestMatchers("/webjars/**").permitAll() // WebJars
             .anyRequest().authenticated())
         .sessionManagement(session -> session
             .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
