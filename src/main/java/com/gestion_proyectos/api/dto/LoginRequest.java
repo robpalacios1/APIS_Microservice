@@ -1,8 +1,18 @@
 package com.gestion_proyectos.api.dto;
 
 public class LoginRequest {
+
   private String email;
   private String password;
+
+  // Constructors
+  public LoginRequest() {
+  }
+
+  public LoginRequest(String email, String password) {
+    this.email = email;
+    this.password = password;
+  }
 
   // Getters and Setters
   public String getEmail() {
@@ -19,5 +29,13 @@ public class LoginRequest {
 
   public void setPassword(String password) {
     this.password = password;
+  }
+
+  @Override
+  public String toString() {
+    return "LoginRequest{" +
+        "email='" + email + '\'' +
+        ", password='[PROTECTED]'" +
+        '}';
   }
 }
