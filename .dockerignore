@@ -1,0 +1,13 @@
+target/
+!target/*.jar
+*.md
+.git/
+.gitignore
+README.md
+HELP.md
+.mvn/
+mvnw
+mvnw.cmd
+Dockerfile
+docker-compose.yml
+.dockerignore
