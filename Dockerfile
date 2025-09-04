@@ -12,7 +12,7 @@ RUN mvn dependency:go-offline
 COPY src ./src
 
 # Compilamos la aplicación y generamos el .jar
-RUN mvn package -DskipTests
+RUN mvn clean package -DskipTests
 
 # ---- Etapa de Run ----
 # Usamos una imagen de Java 17 más ligera para ejecutar la aplicación
