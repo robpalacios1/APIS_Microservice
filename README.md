@@ -649,7 +649,7 @@ logging.level.org.springframework.security=DEBUG
 1. Fork el proyecto
 2. Crea una rama para tu feature (`git checkout -b feature/<nombre_que_desees>`)
 3. Commit tus cambios (`git commit -m 'Add some <cambio_realizado>'`)
-4. Push a la rama (`git push origin feature/<nombre_que_desees>`)
+4. Push a la rama (`git push origin feature/<nombre_de_rama_en_paso_2>`)
 5. Abre un Pull Request
 
 ### Estándares de Código
