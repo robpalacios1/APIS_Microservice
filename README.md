@@ -157,7 +157,6 @@ Una API REST desarrollada con **Spring Boot** para la gestión de proyectos, usu
 **Solución**:
 
 - Agregado `@BeforeEach` para crear roles necesarios en cada test
-- Cambiado rol "DEV" por "DESARROLLADOR" (que existe en DataInitializer)
 - Configurado `@Transactional` para aislamiento de tests
 
 ### Problema 5: Docker Compose Sin Health Checks
